@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+
+class complex{
+    public:
+    int x,y;
+    complex(){
+        x=0;
+        y=0;
+    }
+    comples(int real,int img){
+        x=real;
+        y=img;
+    }
+    complex operator+(complex);
+    complex operator*(complex);
+    friend ostream &operator<<(ostream &,complex&);
+    friend istream &operator >>(istream &,complex&);
+    void default_value();
+    void display();
+    
+};
+
+
+
+complex complex::operator+(complex c)
+{
+    complex result;
+    result.x = x+c.x;
+    result.y=y+c.y;
+    return result;
+}
+
+istream &operator>>(istream &is,complex &obj)
+{
+    is>>obj.x;
+    is>>obj.y;
+    return is;
+}
+
+ostream &operator <<(ostream &outt,complex &obj)
+{
+    outt<<""<<obj.x;
+    outt<<"+"<<obj.y<<"i";
+    return outt;
+}
+
+complex complex ::operator *(complex c)
+{
+    complex result;
+    result.x=(x*c.x)-(y*c.y);
+    result.y=(x*c.y)+(y*c.x);
+    return result;
+}
+
+
+void complex::default_value()
+{
+    cout<<"Value of deaflut constructor":
+    
+}
+
+void complex ::display()
+{
+    if(y>0)
+    cout<<x<<"+"<<y<<"i""\n";
+    else
+    cout<<x<<"-"<<y<<"i""\n";
+    
+}
+
+
+int main()
+{
+    complex c1,c2,c3,c4,c5;
+    c1.default_value();
+    cout<<"\nEnter real and imaginary number for first complex number:"<<endl;
+    cin>>c2;
+    cout<<"First complex number is: ";
+    c2.display();
+    
+    cout<<"\nEnter real and imaginary number for second complex  number: "endl;
+    cin>>c3;
+    cout<<"Second omplex number is:"
+    c3.display();
+    cout<<"\n\t------Arithmetic operations -----"<<endl;
+    c4=c2+c3;
+    cout<<"\nAddition of two complex numbers is : ";
+    c4.display();
+    c5=c2*c3;
+    cout<<"Multiplication of two complex numbers is :"
+    c5.display();
+    
+    
+    return 0;
+}
+
+
